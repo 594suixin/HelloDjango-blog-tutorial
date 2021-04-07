@@ -1,4 +1,5 @@
 from django import template
+
 from ..models import Post, Category, Tag
 
 register = template.Library()
@@ -29,14 +30,4 @@ def show_categories(context):
 def show_tags(context):
     return {
         'tag_list': Tag.objects.all(),
-    }
-
-
-@register.inclusion_tag('comments/inclusions/_list.html', takes_context=True)
-def show_comments(context, post):
-    comment_list = post.comment_set.all().order_by('-created_time')
-    comment_count = comment_list.count()
-    return {
-        'comment_count': comment_count,
-        'comment_list': comment_list,
     }

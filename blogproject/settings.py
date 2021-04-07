@@ -19,7 +19,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '0mjgj8twyz&=(34jo7c1tptt!#p8ox%8nd&_03zh%)vw_**+9x'
+SECRET_KEY = 'ex#h!b3!h87r@gm)^pwff^v4db7q3k&ob%sk)uo$o&+x28p8hj'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -35,7 +35,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'blog.apps.BlogConfig',  # 注册blog应用
+    'blog.apps.BlogConfig',  # 注册 blog 应用
     'comments.apps.CommentsConfig',  # 注册 comments 应用
 ]
 
@@ -74,12 +74,8 @@ WSGI_APPLICATION = 'blogproject.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'blog',
-        'USER': 'root',
-        'PASSWORD': '123456',
-        'HOST': '127.0.0.1',
-        'PORT': '3306',
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
 
@@ -104,8 +100,10 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/2.2/topics/i18n/
 
+# 把英文改为中文
 LANGUAGE_CODE = 'zh-hans'
 
+# 把国际时区改为中国时区（东八区）
 TIME_ZONE = 'Asia/Shanghai'
 
 USE_I18N = True
@@ -118,5 +116,4 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 STATIC_URL = '/static/'
-# 加入下面的配置
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
